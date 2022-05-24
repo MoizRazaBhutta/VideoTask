@@ -1,12 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Video List</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="nav">
+				<h1>Navbar</h1>
+			</div>
+			<div class="main">
+				<h1>Main Content</h1>
+			</div>
+			<div class="sidebar">
+				<div class="video-list">
+					<div class="video-list-header">
+						<h3>Videos</h3>
+						<span class="auto-play">
+							<label class="switch">
+								<input type="checkbox" checked />
+								<span class="slider round"></span>
+							</label>
+							Autoplay
+						</span>
+					</div>
+					<a class="video-link" href="https://www.google.com">
+						<div class="video-thumbnail">
+							<div class="image">
+								<img
+									id="img"
+									alt=""
+									width="100%"
+									src="https://i.ytimg.com/vi/f687hBjwFcM/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&amp;rs=AOn4CLAIiD8SUG05ClWt8q-BBSnRVfJEaA"
+								/>
+							</div>
+							<div class="video-content">
+								<span class="caption"><h3>React Video</h3></span>
+								<div class="bottom-left">
+									<span class="views">120K views</span> |
+									<span class="date">2 years ago</span>
+								</div>
+							</div>
+						</div>
+					</a>
+					<div class="video-thumbnail">
+						<div class="image">
+							<img
+								id="img"
+								alt=""
+								width="100%"
+								src="https://i.ytimg.com/vi/f687hBjwFcM/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&amp;rs=AOn4CLAIiD8SUG05ClWt8q-BBSnRVfJEaA"
+							/>
+						</div>
+						<div class="video-content">
+							<span class="caption"><h3>React Video</h3></span>
+							<div class="bottom-left">
+								<span class="views">120K views</span> |
+								<span class="date">2 years ago</span>
+							</div>
+						</div>
+					</div>
+					<div class="video-thumbnail"></div>
+					<div class="video-thumbnail"></div>
+					<div class="video-thumbnail"></div>
+					<div class="video-thumbnail"></div>
+				</div>
+			</div>
+		</div>
+
+		<script src="app.js"></script>
+	</body>
 </html>
