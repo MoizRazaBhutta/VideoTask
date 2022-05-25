@@ -1,44 +1,65 @@
-// Modal
 let modal = document.getElementById("myModal");
 let closeModal = document.querySelector(".close");
 let modalContent = document.querySelector(".modal-content");
 
-// Picture in Picture button
 let pipButton = document.querySelector(".PIP");
 let isPip = false;
 
-// Get the button that opens the modal
-let videoFromList = document.querySelector(".video-link");
+let openPip = document.querySelectorAll(".open-pip");
+
+let videoFromList = document.querySelectorAll(".video-link");
 let videoPlayer = document.getElementById("video-player");
 
-videoFromList.addEventListener("click", (event) => {
-  event.preventDefault();
-  modal.style.display = "flex";
-  videoPlayer.src = videoFromList.href;
-});
+videoFromList.forEach((video) =>
+	video.addEventListener("click", (event) => {
+		event.preventDefault();
+		isPip = false;
+		pipButton.classList.add("fa-compress-alt");
+		pipButton.classList.remove("fa-expand-alt");
+		modal.style.display = "flex";
+		modal.classList.add("modal");
+		modalContent.classList.remove("video-player--bottom");
+		videoPlayer.src = video.dataset.href;
+		pipButton.classList.add("fa-compress-alt");
+	}),
+);
 
-// When the user clicks on <span> (x), close the modal
+openPip.forEach((pip) =>
+	pip.addEventListener("click", (event) => {
+		event.stopPropagation();
+		isPip = false;
+		modal.style.display = "flex";
+		videoPlayer.src = event.path[2].dataset.href;
+		handlePIP();
+	}),
+);
+
 closeModal.addEventListener("click", () => {
-  modal.style.display = "none";
+	modal.style.display = "none";
 });
 
-pipButton.addEventListener("click", () => {
-  if (isPip) {
-    modalContent.classList.remove("video-player--bottom");
-    modal.classList.add("modal");
-    modal.style.backgroundColor = "rgba(0, 0, 0, 0.4)";
-    isPip = false;
-  } else {
-    modalContent.classList.add("video-player--bottom");
-    modal.classList.remove("modal");
-    modal.style.backgroundColor = "unset";
-    isPip = true;
-  }
-});
+pipButton.addEventListener("click", handlePIP);
 
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
-  if (event.target == modal && !isPip) {
-    modal.style.display = "none";
-  }
+	if (event.target == modal && !isPip) {
+		modal.style.display = "none";
+	}
 };
+
+function handlePIP() {
+	if (isPip) {
+		modalContent.classList.remove("video-player--bottom");
+		modal.classList.add("modal");
+		modal.style.backgroundColor = "rgba(0, 0, 0, 0.4)";
+		pipButton.classList.add("fa-compress-alt");
+		pipButton.classList.remove("fa-expand-alt");
+		isPip = false;
+	} else {
+		modalContent.classList.add("video-player--bottom");
+		pipButton.classList.add("fa-expand-alt");
+		pipButton.classList.remove("fa-compress-alt");
+		modal.classList.remove("modal");
+		modal.style.backgroundColor = "unset";
+		isPip = true;
+	}
+}
