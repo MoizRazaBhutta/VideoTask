@@ -14,6 +14,7 @@ videoFromList.forEach((video) =>
 	video.addEventListener("click", (event) => {
 		event.preventDefault();
 		isPip = false;
+		videoPlayer.style.height = "80vh";
 		pipButton.classList.add("fa-compress-alt");
 		pipButton.classList.remove("fa-expand-alt");
 		modal.style.display = "flex";
@@ -51,6 +52,7 @@ function handlePIP() {
 		modalContent.classList.remove("video-player--bottom");
 		modal.classList.add("modal");
 		modal.style.backgroundColor = "rgba(0, 0, 0, 0.4)";
+		videoPlayer.style.height = "80vh";
 		pipButton.classList.add("fa-compress-alt");
 		pipButton.classList.remove("fa-expand-alt");
 		isPip = false;
@@ -58,6 +60,7 @@ function handlePIP() {
 		modalContent.classList.add("video-player--bottom");
 		pipButton.classList.add("fa-expand-alt");
 		pipButton.classList.remove("fa-compress-alt");
+		videoPlayer.style.height = "unset";
 		modal.classList.remove("modal");
 		modal.style.backgroundColor = "unset";
 		isPip = true;
